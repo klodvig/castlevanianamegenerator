@@ -1,0 +1,3 @@
+Push a button and get a name for the next Castlevania game.
+
+TODO: Make better word lists... 

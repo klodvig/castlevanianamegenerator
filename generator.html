@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Castlevania name generator</title>
+</head>
+<body>
+    <button id="myButton">Generate a name for the next Castlevania game!</button>
+    <p id="randomWords"></p>
+</body>
+<script>
+  const musicTerms = [
+  "Accelerando",  // Gradually speeding up
+  "Adagio",        // Slow tempo (walking speed)
+  "Allegro",       // Fast tempo
+  "A cappella",    // Singing without instruments
+  "Alto",          // Low female vocal range
+  "Arpeggio",      // Playing notes of a chord one after another
+  "Bar",           // A measure in musical notation
+  "Bass",          // Lowest vocal range (male)
+  "Cadence",       // A musical phrase that creates a sense of arrival
+  "Cello",         // String instrument (lower than violin)
+  "Chord",         // A group of notes played together
+  "Chromatic",     // Refers to all 12 notes within an octave
+  "Clef",          // Symbol that defines the pitch range on a staff
+  "Composer",      // Someone who writes music
+  "Conductor",     // Leads and coordinates an orchestra or ensemble
+  "Crescendo",     // Gradually getting louder
+  "Decrescendo",   // Gradually getting softer
+  "Dynamics",      // Volume levels in music
+  "Enharmonic",     // Notes that sound the same but are spelled differently
+  "Fermata",       // Hold a note for longer than its written value
+  "Forte",         // Loud
+  "Glissando",     // Sliding smoothly between notes
+  "Harmonic",      // Relating to chords and harmony
+  "Harmony",       // The pleasing arrangement of simultaneous notes
+  "Improvization", // Creating music spontaneously
+  "Interval",      // The distance between two notes
+  "Key",           // The musical scale a piece is based on
+  "Largo",         // Very slow tempo
+  "Legato",        // Playing notes smoothly connected
+  "Libretto",      // The text of an opera or other vocal work
+  "Maestoso",      // Majestic and stately
+  "Major",         // A type of musical scale with a bright sound
+  "Measure",       // A group of beats marked off by bar lines
+  "Melody",        // The main tune of a piece of music
+  "Mezzo-forte",   // Moderately loud
+  "Mezzo-piano",   // Moderately soft
+  "Metronome",     // A device that sets the tempo
+  "Minor",         // A type of musical scale with a darker sound
+  "Moderato",      // Moderate tempo
+  "Movement",      // A section of a larger work (e.g., sonata)
+  "Music theory",  // The study of the building blocks of music
+  "Notation",      // The system of symbols used to write music
+  "Octave",        // Eight notes of a scale (C to C)
+  "Opera",         // A theatrical work that tells a story through music
+  "Orchestra",      // A large ensemble of instruments
+  "Pianissimo",    // Very soft
+  "Piano",         // Soft
+  "Pianoforte",    // Upright piano (combination of piano and forte)
+  "Pitch",         // The highness or lowness of a sound
+  "Prestissimo",   // Extremely fast tempo
+  "Presto",         // Very fast tempo
+  "Rhythm",        // The organization of musical time
+  "Scale",         // A series of notes arranged by pitch
+  "Scherzo",        // A lively and playful movement
+  "Secco recitativo", // Speech-like singing in opera
+  "Sempre",        // Always
+  "Sforzando",     // Sudden strong accent
+  "Sharp",          // Raises a note by a half step
+  "Staccato",      // Notes played short and detached
+  "Staff",         // The five lines and four spaces where music is written
+  "Symphony",      // A large orchestral work in several movements
+  "Tempo",         // The speed of the music
+  "Timbre",        // The tonal quality of a sound (instrument sound)
+  "Time signature", // Indicates the number of beats per measure and the type of note that gets one beat
+  "Treble clef",    // Clef used for higher-pitched instruments (violin)
+  "Trill",          // Rapid alternation between two notes
+  "Tutti",         // All instruments play together
+  "Unison",        // All instruments or voices play the same note
+  "Variation",      // A modified version of a theme
+  "Vibrato",        // A slight waver in pitch to add expression
+  ]
+  
+  const darkNouns = [
+  "Abyss",         // A deep or bottomless chasm
+  "Apocalypse",   // A complete destruction of the world
+  "Catacombs",     // Underground passages where dead bodies are buried
+  "Cavern",        // A large, deep hole in the ground
+  "Censorship",    // The suppression of information
+  "Chaos",         // Complete disorder and confusion
+  "Chasm",         // A deep, wide gap or split
+  "Cobweb",        // A web spun by a spider
+  "Coffin",        // A long, narrow box in which a dead person is buried
+  "Corruption",    // Dishonest or fraudulent conduct by those in power
+  "Crypt",         // An underground chamber for burying the dead
+  "Curse",         // A magic spell that causes bad luck or harm
+  "Desolation",     // A state of complete emptiness and destruction
+  "Dungeon",       // A dark underground room used as a prison
+  "Eclipse",       // A partial or complete obscuring of the sun or moon
+  "Execution",     // The putting to death of a condemned person
+  "Fog",           // A thick cloud of tiny water droplets near the ground
+  "Forgery",       // The crime of imitating something with the intent to deceive
+  "Gallows",       // A frame from which people are hanged
+  "Gibbet",        // A structure on which the bodies of executed criminals were displayed in public
+  "Grave",         // A hole in the ground in which a dead body is buried
+  "Guillotine",    // A machine for beheading people
+  "Hallucination", // An experience of seeing or hearing something that is not there
+  "Heresy",        // A belief that is contrary to what is accepted as true
+  "Horror",        // A feeling of fear or disgust
+  "Inferno",       // Hell
+  "Isolation",     // The state of being alone or separated from others
+  "Lair",          // The den of a wild animal
+  "Lie",           // A false statement made to deceive someone
+  "Liar",          // A person who tells lies
+  "Maelstrom",     // A large and violent whirlpool
+  "Malice",        // A wish to do evil to others
+  "Mausoleum",     // A large tomb
+  "Maze",          // A network of confusing paths or passages
+  "Menace",        // A threat
+  "Mire",          // Soft, wet mud
+  "Mist",          // A visible mass of tiny water droplets suspended in the air
+  "Monster",       // A cruel and frightening creature
+  "Murder",        // The unlawful killing of another human being with malice aforethought
+  "Nightmare",     // A frightening dream
+  "Oblivion",      // A state of complete forgetfulness
+  "Pandemonium",   // Wild and noisy disorder
+  "Paradox",       // A statement or situation that seems to be contradictory but may possibly be true in a way that is difficult to understand
+  "Peril",         // Danger
+  "Phantom",       // A ghost
+  "Plague",         // A widespread infectious disease
+  "Poison",        // A substance that can kill or seriously harm a living organism
+  "Quicksand",     // Loose sand saturated with water that will sink things that are placed on it
+  ];
+
+  const button = document.getElementById("myButton");
+  const randomWords = document.getElementById("randomWords");
+
+  button.addEventListener("click", function() {
+    // Get random indexes for each list
+    const randomIndex1 = Math.floor(Math.random() * musicTerms.length);
+    const randomIndex2 = Math.floor(Math.random() * darkNouns.length);
+
+    // Get random words
+    const randomWord1 = musicTerms[randomIndex1];
+    const randomWord2 = darkNouns[randomIndex2];
+
+    // Combine and display the words
+    randomWords.textContent = `Castlevania: ${randomWord1} of ${randomWord2}`;
+  });
+</script>
+</html>
